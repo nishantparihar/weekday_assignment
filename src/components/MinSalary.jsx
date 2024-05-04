@@ -1,45 +1,29 @@
-import {Autocomplete, TextField, Stack} from '@mui/material';
+import {Autocomplete, TextField} from '@mui/material';
 
 
 export default function MinSalary(){
     return <>
 
-            <Autocomplete
-            multiple
-            limitTags={2}
-            id="grouped-demo"
-            size='small'
-            options={roleslist}
-            groupBy={(roleslist) => roleslist.field}
-            getOptionLabel={(roleslist) => roleslist.title}
-            sx={{ minWidth: 240, direction: 'initial'}}
-            blurOnSelect={true}
-            
-            renderInput={(params) => <TextField {...params} label="Minimum Base Pay Salary"/>}
-            />    
+        <Autocomplete
+        id="grouped-demo"
+        size='small'
+        options={salaryList}
+        sx={{ minWidth: 240}}
+        blurOnSelect={true}            
+        renderInput={(params) => <TextField {...params} label="Minimum Base Pay Salary"/>}
+        />    
     
     </>
 }
 
 
-const roleslist =[
-
-    {field: "ENGINEERING", title: "Backend"},
-    {field: "ENGINEERING", title: "Frontend"},
-    {field: "ENGINEERING", title: "Fullstack"},
-    {field: "ENGINEERING", title: "IOS"},
-    {field: "ENGINEERING", title: "Flutter"},
-    {field: "ENGINEERING", title: "React Native"},
-    {field: "ENGINEERING", title: "Android"},
-    {field: "ENGINEERING", title: "Tech Lead"},
-    {field: "ENGINEERING", title: "Dev-Ops"},
-    {field: "ENGINEERING", title: "Data Engineer"},
-    {field: "ENGINEERING", title: "Data Science"},
-    {field: "ENGINEERING", title: "Computer-Vision"},
-    {field: "ENGINEERING", title: "Nlp"},
-    {field: "ENGINEERING", title: "Deep-Learning"},
-    {field: "ENGINEERING", title: "Test / Qa"},
-    {field: "ENGINEERING", title: "Web3"},
-    {field: "ENGINEERING", title: "Sre"},
-
+const salaryList = [
+    {label: '0L', min: 0},
+    {label: '10L', min: 10},
+    {label: '20L', min: 20},
+    {label: '30L', min: 30},
+    {label: '40L', min: 40},
+    {label: '50L', min: 50},
+    {label: '60L', min: 60},
+    {label: '70L', min: 70},
 ]

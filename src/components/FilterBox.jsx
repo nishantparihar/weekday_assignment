@@ -10,7 +10,7 @@ import Location from './Location';
 
 export default function FilterBox(){
     return <>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" sx={{mt: 5, width: '60rem'}} spacing={2}>
                 <Roles />
                 <Experience />
                 <Location />
