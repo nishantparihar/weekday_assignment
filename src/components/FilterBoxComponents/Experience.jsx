@@ -1,16 +1,31 @@
 import { Style } from '@mui/icons-material';
 import {Autocomplete, TextField} from '@mui/material';
-
+import { useEffect, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { jdList } from '../../state/atoms/atoms';
 
 
 export default function Experience(){
-    return <>
 
+    const [expSelected, setExpSelected] = useState(null);
+    const setJobList = useSetRecoilState(jdList);
+    
+    useEffect(()=>{
+        if(expSelected){
+            setJobList((jobList)=>{
+                return jobList ? jobList.filter((job)=>job.minExp <= expSelected.years) : []
+            })
+            console.log(typeof expSelected.years)
+        }
+    }, [expSelected]);
+
+    return <>
             <Autocomplete
-            id="grouped-demo"
+            id="expFilter"
             size='small'
-            options={roleslist}
+            options={expList}
             sx={{ minWidth: 125, direction: 'initial', fontSize: 5}}
+            onChange={(e, v)=> setExpSelected(v)}
             blurOnSelect={true}
             renderInput={(params) => <TextField {...params} label="Experience"/>}
             />    
@@ -19,7 +34,7 @@ export default function Experience(){
 }
 
 
-const roleslist =[
+const expList =[
 
     {label: '1', years: 1},
     {label: '2', years: 2},

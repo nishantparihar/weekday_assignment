@@ -10,11 +10,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { RecoilRoot } from 'recoil';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     <ThemeProvider theme={theme}>
       <RecoilRoot>
         <App />
       </RecoilRoot>
     </ThemeProvider>
-  </React.StrictMode>,
+
 )

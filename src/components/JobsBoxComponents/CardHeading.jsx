@@ -4,9 +4,9 @@ import { Avatar, Box, CardHeader, Typography } from '@mui/material';
 export default function CardHeading({jd}){
 
     function titleCase(str) {
-        return str.toLowerCase().split(' ').map(function(word) {
+        return str ? str.toLowerCase().split(' ').map(function(word) {
           return word.replace(word[0], word[0].toUpperCase());
-        }).join(' ');
+        }).join(' ') : "";
       }
 
     return (

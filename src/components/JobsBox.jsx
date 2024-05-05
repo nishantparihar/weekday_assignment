@@ -7,6 +7,6 @@ export default function JobsBox(){
     const jobList = useRecoilValue(jdList)
 
     return <div style={{marginTop: '50px', display: 'flex', gap: '30px', flexWrap: 'wrap'}}>
-            {jobList.map((jd)=> <CompanyCard jd={jd} />)}
+            {jobList ? jobList.map((jd)=> <CompanyCard jd={jd} key={jd.jdUid} />) : <></>}
     </div>
 }
