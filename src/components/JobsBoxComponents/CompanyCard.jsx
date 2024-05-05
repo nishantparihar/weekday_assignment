@@ -6,14 +6,14 @@ import CardExperience from './CardExperience';
 import CardFooter from './CardFooter';
 
 
-export default function CompanyCard(){
+export default function CompanyCard({jd}){
     return <>
             <Paper elevation={2} sx={{width: 330}}>
                 <Card>
                     <CardActionArea >
                         <CardContent>
-                            <CardHeading/>
-                            <CardSalary />
+                            <CardHeading jd={jd}/>
+                            <CardSalary jd={jd}/>
                             <CardAbout />
                             <CardExperience />
                         </CardContent>
