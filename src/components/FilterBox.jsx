@@ -1,9 +1,9 @@
 import Stack from '@mui/material/Stack';
-import Roles from './Roles';
-import Experience from './Experience';
-import MinSalary from './MinSalary';
-import Company from './Company';
-import Location from './Location';
+import Roles from './FilterBoxComponents/Roles';
+import Experience from './FilterBoxComponents/Experience';
+import MinSalary from './FilterBoxComponents/MinSalary';
+import Company from './FilterBoxComponents/Company';
+import Location from './FilterBoxComponents/Location';
 
 
 
