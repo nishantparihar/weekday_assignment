@@ -15,7 +15,7 @@ export default function CompanyCard({jd}){
                             <CardHeading jd={jd}/>
                             <CardSalary jd={jd}/>
                             <CardAbout jd={jd} />
-                            <CardExperience />
+                            <CardExperience jd={jd} />
                         </CardContent>
                         <CardActions>
                             <CardFooter />
