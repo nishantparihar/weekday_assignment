@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import FilterBox from './components/FilterBox';
 import JobsBox from './components/JobsBox';
 import Container from '@mui/material/Container'
