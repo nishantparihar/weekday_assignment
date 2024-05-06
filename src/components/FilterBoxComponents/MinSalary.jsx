@@ -1,7 +1,11 @@
 import {Autocomplete, TextField} from '@mui/material';
-
+import { useSetRecoilState } from 'recoil';
+import { filterSalary } from '../../state/atoms/atoms';
 
 export default function MinSalary(){
+
+    const setFilterSalary = useSetRecoilState(filterSalary);
+
     return <>
 
         <Autocomplete
@@ -9,6 +13,7 @@ export default function MinSalary(){
         size='small'
         options={salaryList}
         sx={{ minWidth: 240}}
+        onChange={(e, v)=> setFilterSalary(v.min)}
         blurOnSelect={true}            
         renderInput={(params) => <TextField {...params} label="Minimum Base Pay Salary"/>}
         />    

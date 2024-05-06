@@ -13,7 +13,7 @@ export default function Experience(){
     useEffect(()=>{
         if(expSelected){
             setJobList((jobList)=>{
-                return jobList ? jobList.filter((job)=>job.minExp <= expSelected.years) : []
+                return jobList ? jobList.filter((job)=>job.minExp <= expSelected) : []
             })
         }
     }, [expSelected]);
@@ -24,7 +24,7 @@ export default function Experience(){
             size='small'
             options={expList}
             sx={{ minWidth: 125, direction: 'initial', fontSize: 5}}
-            onChange={(e, v)=> setExpSelected(v)}
+            onChange={(e, v)=> setExpSelected(v.years)}
             blurOnSelect={true}
             renderInput={(params) => <TextField {...params} label="Experience"/>}
             />    
