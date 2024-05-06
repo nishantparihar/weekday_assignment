@@ -8,6 +8,6 @@ export default function Company(){
     const setFilterCompany = useSetRecoilState(filterCompany)
 
     return <>
-            <TextField id="outlined-basic" onChange={(e)=>{setFilterCompany(e.target.value)}} sx={{ width: 210}} label="Search Company Name" variant="outlined" size='small' />    
+            <TextField id="outlined-basic" onChange={(e)=>{setFilterCompany(e.target.value.toLowerCase())}} sx={{ width: 210}} label="Search Company Name" variant="outlined" size='small' />    
     </>
 }

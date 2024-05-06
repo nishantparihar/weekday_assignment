@@ -10,13 +10,6 @@ export default function Experience(){
     const [expSelected, setExpSelected] = useRecoilState(filterExp);
     const setJobList = useSetRecoilState(jdList);
     
-    useEffect(()=>{
-        if(expSelected){
-            setJobList((jobList)=>{
-                return jobList ? jobList.filter((job)=>job.minExp <= expSelected) : []
-            })
-        }
-    }, [expSelected]);
 
     return <>
             <Autocomplete

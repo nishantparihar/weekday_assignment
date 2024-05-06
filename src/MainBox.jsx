@@ -3,15 +3,63 @@ import FilterBox from './components/FilterBox';
 import JobsBox from './components/JobsBox';
 import Container from '@mui/material/Container'
 import axios from 'axios';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { jdList } from './state/atoms/atoms';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
+
+import { filterExp, filterLocation, filterCompany, filterRole, filterSalary } from './state/atoms/atoms';
 
 
 export default function MainBox(){
 
     const [jobList, setJobList] = useRecoilState(jdList);
+
+    const selectedCompany = useRecoilValue(filterCompany);
+    const selectedExperience = useRecoilValue(filterExp);
+    const selectedLocation = useRecoilValue(filterLocation);
+    const selectedSalary = useRecoilValue(filterSalary);
+    const selectedRoles = useRecoilValue(filterRole);
+
+
+
+    function filterData(){
+
+        if(selectedCompany){
+            setJobList((jobList)=>{
+                return jobList ? jobList.filter((job)=>job.companyName.toLowerCase().includes(selectedCompany)) : []
+            })
+        }
+
+        if(selectedExperience){
+            setJobList((jobList)=>{
+                return jobList ? jobList.filter((job)=>job.minExp <= expSelected) : []
+            })
+        }
+
+        if(selectedLocation){
+            setJobList((jobList)=>{
+                return jobList ? jobList.filter((job)=>{
+                    if(job.location === 'remote' && selectedLocation.includes('remote'))
+                        return true
+                    if(job.location === 'hybrid' && selectedLocation.includes('hybrid'))
+                        return true
+                    if(selectedLocation.includes('in-office'))
+                        return true
+                    
+                }) : []
+            })
+        }
+
+        if(selectedSalary){
+
+        }
+
+        if(selectedRoles){
+
+        }
+
+    }
 
 
     function fetchData(){
@@ -25,7 +73,7 @@ export default function MainBox(){
                 const jdIds = jobList ? jobList.map(job => job.jdUid) : [];
                 const resJdList = res.data.jdList ? res.data.jdList.filter((job)=> !jdIds.includes(job.jdUid)) :[];
                 setJobList(jobList => [...jobList,...resJdList]);
-                
+                filterData()
             })
         } 
         catch (error) {
@@ -36,7 +84,12 @@ export default function MainBox(){
 
     useEffect(()=>{
         fetchData()
+        filterData()
     }, [])
+
+    useEffect(()=>{
+        filterData()
+    }, [selectedCompany, selectedExperience, selectedLocation, selectedRoles, selectedSalary])
 
 
     return <>
