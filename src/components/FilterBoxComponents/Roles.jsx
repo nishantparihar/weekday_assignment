@@ -1,8 +1,12 @@
 import {Autocomplete, TextField, Stack} from '@mui/material';
-
+import { useSetRecoilState } from 'recoil';
+import { filterRole } from '../../state/atoms/atoms';
 
 
 export default function Roles(){
+
+    const setFilterRole = useSetRecoilState(filterRole);
+
     return <div>
               
                     <Autocomplete
@@ -11,6 +15,7 @@ export default function Roles(){
                     id="grouped-demo"
                     size='small'
                     options={roleslist}
+                    onChange={(e, v) => {setFilterRole(v ? v.map((choice)=>choice.title) : [])}}
                     groupBy={(roleslist) => roleslist.field}
                     getOptionLabel={(roleslist) => roleslist.title}
                     sx={{ minWidth: 150, direction: 'initial'}}
@@ -25,22 +30,22 @@ export default function Roles(){
 
 const roleslist =[
 
-    {field: "ENGINEERING", title: "Backend"},
-    {field: "ENGINEERING", title: "Frontend"},
-    {field: "ENGINEERING", title: "Fullstack"},
-    {field: "ENGINEERING", title: "IOS"},
-    {field: "ENGINEERING", title: "Flutter"},
-    {field: "ENGINEERING", title: "React Native"},
-    {field: "ENGINEERING", title: "Android"},
-    {field: "ENGINEERING", title: "Tech Lead"},
-    {field: "ENGINEERING", title: "Dev-Ops"},
-    {field: "ENGINEERING", title: "Data Engineer"},
-    {field: "ENGINEERING", title: "Data Science"},
-    {field: "ENGINEERING", title: "Computer-Vision"},
-    {field: "ENGINEERING", title: "Nlp"},
-    {field: "ENGINEERING", title: "Deep-Learning"},
-    {field: "ENGINEERING", title: "Test / Qa"},
-    {field: "ENGINEERING", title: "Web3"},
-    {field: "ENGINEERING", title: "Sre"},
+    {field: "ENGINEERING", title: "backend"},
+    {field: "ENGINEERING", title: "frontend"},
+    {field: "ENGINEERING", title: "fullstack"},
+    {field: "ENGINEERING", title: "ios"},
+    {field: "ENGINEERING", title: "flutter"},
+    {field: "ENGINEERING", title: "react native"},
+    {field: "ENGINEERING", title: "android"},
+    {field: "ENGINEERING", title: "tech lead"},
+    {field: "ENGINEERING", title: "dev-ops"},
+    {field: "ENGINEERING", title: "data engineer"},
+    {field: "ENGINEERING", title: "data science"},
+    {field: "ENGINEERING", title: "computer-vision"},
+    {field: "ENGINEERING", title: "nlp"},
+    {field: "ENGINEERING", title: "deep-learning"},
+    {field: "ENGINEERING", title: "test / qa"},
+    {field: "ENGINEERING", title: "web3"},
+    {field: "ENGINEERING", title: "sre"},
 
 ]
