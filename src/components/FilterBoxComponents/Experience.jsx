@@ -1,13 +1,13 @@
 import { Style } from '@mui/icons-material';
 import {Autocomplete, TextField} from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { jdList } from '../../state/atoms/atoms';
-
+import { filterExp } from '../../state/atoms/atoms';
 
 export default function Experience(){
 
-    const [expSelected, setExpSelected] = useState(null);
+    const [expSelected, setExpSelected] = useRecoilState(filterExp);
     const setJobList = useSetRecoilState(jdList);
     
     useEffect(()=>{
@@ -15,7 +15,6 @@ export default function Experience(){
             setJobList((jobList)=>{
                 return jobList ? jobList.filter((job)=>job.minExp <= expSelected.years) : []
             })
-            console.log(typeof expSelected.years)
         }
     }, [expSelected]);
 

@@ -1,6 +1,6 @@
 import {TextField} from '@mui/material';
 import { useSetRecoilState } from 'recoil';
-import filterCompany from '../../state/atoms/atoms'
+import {filterCompany} from '../../state/atoms/atoms'
 
 
 export default function Company(){
